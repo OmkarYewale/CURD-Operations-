@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update | User</title>
+
+    <style>
+        #main{
+            margin-top: 50px;
+            margin-left: 40%;
+            padding:5px;
+            border: 2px solid black;
+            border-radius: 5px;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+    <form method="POST">
+        {% csrf_token %}
+        <label for="id">Id : </label>
+        <input type="text" id="id" name="id" value="{{sdb.id}}"><br><br>
+
+        <label for="name">Name : </label>
+        <input type="text" id="name" name="name" value="{{sdb.name}}"><br><br>
+
+        <label for="age">Age : </label>
+        <input type="text" id="age" name="age" value="{{sdb.age}}"><br><br>
+
+        <label for="mobile_no">Mobile No : </label>
+        <input type="text" id="mobile_no" name="mobile_no" value="{{sdb.mobile_no}}"><br><br>
+
+        <input type="submit" value="View User" formaction="{% url 'Showuserforupdate'%}">
+
+        <input type="submit" value="Update" formaction="{% url 'updateuser'%}">
+
+
+        <p>{{msg}}</p>
+    </form>
+    </div>
+</body>
+</html>

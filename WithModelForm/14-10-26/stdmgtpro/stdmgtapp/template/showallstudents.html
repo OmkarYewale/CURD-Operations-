@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Student Records</title>
+    <style>
+        table,th,tr,td{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1>Students Records</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Phone No</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for std in stddb%}
+                <tr>
+                    <td>{{std.id}}</td>
+                    <td>{{std.name}}</td>
+                    <td>{{std.email}}</td>
+                    <td>{{std.age}}</td>
+                    <td>{{std.get_course_display}}</td>
+                    <td>{{std.phone}}</td>
+                    <td>{{std.address}}</td>
+                    <td><a href="{% url 'updatestudent' std.id %}">Edit</a></td>
+                    <td><a href="{% url 'deletestudent' std.id %}">Delete</a></td>
+                </tr>
+                {%endfor%}
+        </tbody>
+    </table>
+</body>
+</html>

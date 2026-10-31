@@ -1,0 +1,127 @@
+ Advanced Employee ModelForm
+
+Intermediate–Advanced ModelForm Custom validation
+
+60–90 minutes
+
+## Scenario
+
+Your company needs an employee registration and update system. You have already created the `Employee` and `Department` models. Now implement employee creation and updating using Django `ModelForm`.
+
+## Requirements
+
+### 1. Create `EmployeeForm`
+
+Create a `forms.py` file and implement a `ModelForm` using your existing `Employee` model.
+
+- Include all relevant employee fields except the automatically generated primary key.
+- Use appropriate widgets for text inputs, dropdowns, and numeric fields.
+- Display field-specific validation errors in the HTML template.
+- Ensure the department dropdown displays department names, not object representations.
+
+### 2. Implement custom validation
+
+Your form must enforce these rules:
+
+| Field         | Validation requirement           |
+| ------------- | -------------------------------- |
+| Employee name | Required; 2–50 characters        |
+| Employee code | Must be unique                   |
+| Email         | Must be valid and unique         |
+| Mobile        | Exactly 10 digits                |
+| Experience    | Cannot be negative               |
+| Salary        | Must be greater than zero        |
+| Department    | Must refer to a valid department |
+
+Also implement cross-field validation:
+
+- The minimum salary and maximum salary, if you include them as search-form fields, must satisfy minimum salary ≤ maximum salary.
+- If you include a date of joining, it must not be in the future.
+
+Use the appropriate ModelForm validation methods. Avoid duplicating model-level validation unnecessarily.
+
+### 3. Create employee view
+
+Implement a view that:
+
+- Displays an empty form on a GET request.
+- Validates and saves submitted data on a POST request.
+- Displays a success message after saving.
+- Re-renders the form with validation errors when invalid data is submitted.
+- Redirects to the employee list after successful creation.
+
+### 4. Update employee view
+
+Implement an update view that:
+
+- Retrieves the employee using their unique `employee_code`.
+- Prepopulates the form with the employee's existing values.
+- Updates the existing record instead of creating a duplicate.
+- Preserves the record's unique email and employee code when the same employee is edited without changing those values.
+- Handles a nonexistent employee appropriately.
+
+### 5. Template requirements
+
+Create `employee_form.html` and implement:
+
+- Labels and inputs for every form field.
+- Field-specific error messages.
+- Non-field errors.
+- CSRF protection.
+- A submit button whose text changes between Add Employee and Update Employee.
+
+## Test cases
+
+Use these cases to test your implementation.
+
+### Testing checklist
+
+1/6 tested
+
+Valid employee
+
+All fields contain valid values
+
+Expected: Employee is saved successfully.
+
+Duplicate email
+
+Use an email already assigned to another employee
+
+Expected: Validation error; no duplicate record.
+
+Invalid mobile
+
+Enter 12345
+
+Expected: Validation error for mobile.
+
+Negative salary
+
+Enter -5000
+
+Expected: Validation error; record is not saved.
+
+Edit existing employee
+
+Change the employee's city only
+
+Expected: Existing record is updated; no duplicate.
+
+Invalid employee code
+
+Open an update URL with an unknown code
+
+Expected: Appropriate not-found response.
+
+## Completion criteria
+
+Your task is complete when:
+
+- `EmployeeForm` validates input correctly.
+- Create and update operations work.
+- Duplicate values are handled correctly.
+- Errors appear beside the relevant fields.
+- All six test cases pass.
+
+Your first step: Implement `EmployeeForm` in `forms.py`. Once you finish, send me your code. I'll review it like an interviewer and point out mistakes without immediately giving you the complete solution.

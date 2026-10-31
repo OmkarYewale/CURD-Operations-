@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Student</title>
+    <style>
+        .formdiv{
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 5px;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <div class="formdiv">
+    <h1>Create Student</h1>
+    <hr>
+    <form action="{% url 'createstudent'%}" method="POST">
+        {%csrf_token%}
+        {{form.as_p}}
+
+        <input type="submit" value="Create Student">
+
+        <p>student {{std.name}} records are inserted  at id {{std.id}} </p>
+    </form>
+    </div>
+</body>
+</html>

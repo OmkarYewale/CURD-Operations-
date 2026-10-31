@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crete emp</title>
+    <style>
+        form{
+            border: 2px solid black;
+            border-radius: 5px;
+            width: fit-content;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form  method="POST" action="{%url 'create'%}">
+        {% csrf_token %} 
+        <h3>Create Employee</h3>
+        <hr>
+        <label for="employee_code">Employee_code:</label>
+        <input type="text" name="employee_code" id="employee_code" value="{{empdb.employee_code}}"><br><br>
+
+        <label for="employee_name">Employee_name:</label>
+        <input type="text" name="employee_name" id="employee_name" value="{{empdb.employee_name}}"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="{{empdb.email}}"><br><br>
+
+        <label for="phone">Mobile:</label>
+        <input type="tel" name="phone" id="phone" value="{{empdb.phone}}"><br><br>
+
+        <label for="technology"> Technology:</label>
+        <input type="text" name="technology" id="technology" value="{{empdb.technology}}"><br><br>
+
+        <label for="experience">Experience:</label> 
+        <input type="tel" name="experience" id="experience" value="{{empdb.experience}}"><br><br>
+
+        <label for="salary">Salary</label>
+        <input type="tel" name="salary" id="salary" value="{{empdb.salary}}"><br><br>
+
+        <label for="city">city</label>
+        <input type="text" name="city" id="city" value="{{empdb.city}}"><br><br>
+
+        <label for="status">status</label>
+        <input type="text" name="status" id="status" value="{{empdb.status}}"><br><br>
+
+        <input type="submit" value="Create">
+        
+        <p>{{msg}}</p>
+
+    </form>
+</body>
+</html>

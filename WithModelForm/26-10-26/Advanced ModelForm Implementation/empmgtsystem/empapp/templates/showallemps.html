@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>All Employee List</title>
+    <style>
+        table,th,tr,td{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h2>All Employee Details  !!! </h2>
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>employee_code</th>
+                <th>employee_name</th>
+                <th>phone</th>
+                <th>email</th>
+                <th>technology</th>
+                <th>experience</th>
+                <th>department</th>
+                <th>salary</th>
+                <th>city</th>
+                <th>status</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in empdb%}
+            <tr>
+                <td>{{emp.employee_code}}</td>
+                <td>{{emp.employee_name}}</td>
+                <td>{{emp.phone}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.get_technology_display}}</td>
+                <td>{{emp.experience}}</td>
+                <td>{{emp.department}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.city}}</td>
+                <td>{{emp.status}}</td>
+                <td>
+                    <a href="{% url 'Update' emp.employee_code%}">Edit</a>/
+                    <a href="{% url 'Delete' emp.employee_code %}">Delete</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</body>
+</html>

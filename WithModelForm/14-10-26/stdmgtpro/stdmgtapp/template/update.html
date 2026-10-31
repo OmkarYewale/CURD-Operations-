@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student</title>
+    <style>
+        .formdiv{
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 5px;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <div class="formdiv">
+    <h1>Update Student</h1>
+    <hr>
+    <form action="{% url 'updatestudent' stddb.id%}" method="POST">
+        {%csrf_token%}
+        {{form.as_p}}
+
+        <input type="submit" value="update Student">
+
+        <p>student {{stddb.name}} records are updating  at id {{stddb.id}} </p>
+    </form>
+    </div>
+</body>
+</html>

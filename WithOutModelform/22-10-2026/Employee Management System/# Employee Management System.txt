@@ -1,0 +1,126 @@
+# Employee Management System
+--------------------------------
+
+Level 1
+
+Practical coding
+
+45–60 min
+
+Scenario: A company wants a Django web application to manage its employees. You must build the 
+backend and display employee records on an HTML page.
+
+## Requirements
+
+### 1. Create the Employee model
+
+Create an `Employee` model with these fields:
+
+| Field           | Requirements                           |
+| --------------- | -------------------------------------- |
+| `employee_code` | Unique, maximum 10 characters          |
+| `employee_name` | Maximum 50 characters                  |
+| `email`         | Unique email address                   |
+| `mobile`        | Exactly 10 digits                      |
+| `technology`    | Python, Django, Java, etc.             |
+| `experience`    | Decimal or integer, cannot be negative |
+| `salary`        | Must be greater than zero              |
+| `city`          | Employee's city                        |
+| `status`        | Active or Inactive                     |
+
+### 2. Implement CRUD operations
+
+Your application must support:
+
+- Create: Add a new employee.
+- Read: Display all employees in an HTML table.
+- Update: Edit an existing employee's information.
+- Delete: Delete an employee after confirmation.
+
+Use Django ORM operations rather than writing raw SQL.
+
+### 3. Implement employee search
+
+Create a search page with the following behavior:
+
+- Search employees by technology using `__icontains`.
+- Display only Active employees in the search results.
+- Sort results by employee name in ascending order.
+- Display a message when no matching employees are found.
+- If the search input is empty or contains only spaces, show an appropriate validation message.
+
+### 4. Add validation
+
+Implement these rules:
+
+1. Employee code must be unique.
+2. Email must be valid and unique.
+3. Mobile number must contain exactly 10 digits.
+4. Employee name cannot be empty.
+5. Technology must contain at least two characters.
+6. Experience cannot be negative.
+7. Salary must be greater than zero.
+
+Use appropriate Django model validation, form validation, or database constraints where applicable.
+
+## Expected project structure
+
+```
+EmployeeProject/
+├── manage.py
+├── EmployeeProject/
+│   ├── settings.py
+│   └── urls.py
+└── employeeapp/
+    ├── models.py
+    ├── forms.py
+    ├── views.py
+    ├── urls.py
+    └── templates/
+        └── employeeapp/
+            ├── employee_list.html
+            ├── employee_form.html
+            ├── employee_update.html
+            └── employee_search.html
+```
+
+## Interview evaluation checklist
+
+### Your progress
+
+0 of 6
+
+1\. Model and migrations
+
+Define fields, unique constraints, and validation.
+
+2\. ModelForm
+
+Create and validate employee records.
+
+3\. Create and list views
+
+Save records and render them in a table.
+
+4\. Update and delete
+
+Use get_object_or_404 and the correct ORM operations.
+
+5\. Search and filtering
+
+Combine icontains, status filtering, and ordering.
+
+6\. Error handling
+
+Handle invalid inputs and empty results.
+
+## How to practice like an interview
+
+- Try to complete the task yourself without copying a complete solution.
+- Test successful cases and invalid inputs.
+- Be ready to explain why you chose each ORM method.
+- Share your code or errors with me, and I'll review it like a technical interviewer, point out bugs, and suggest improvements.
+
+Your first step: Create the `Employee` model in `models.py` and run your migrations. Don't start with the views yet.
+
+After this task, we can move to advanced Django interview projects involving authentication, pagination, custom QuerySets, complex ORM queries, and Django REST Framework.

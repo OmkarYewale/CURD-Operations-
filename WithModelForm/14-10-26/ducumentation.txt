@@ -1,0 +1,119 @@
+
+# Django Practice Task: Student Registration System
+
+Difficulty: Intermediate
+
+Django ModelForm
+
+CRUD Operations
+
+## 1. Project requirements
+
+Create a Django application named `students` that allows users to register students, view student records, update their information, and delete records.
+
+### 2. Create the Student model
+
+Create a model named `Student` with these fields:
+
+| Field        | Data type     | Validation                        |
+| ------------ | ------------- | --------------------------------- |
+| `name`       | CharField     | Required, minimum 3 characters    |
+| `email`      | EmailField    | Required, valid email             |
+| `age`        | IntegerField  | Between 18 and 35                 |
+| `course`     | CharField     | Choose from predefined courses    |
+| `phone`      | CharField     | Exactly 10 digits                 |
+| `address`    | TextField     | Required                          |
+| `created_at` | DateTimeField | Automatically store creation time |
+
+For the `course` field, use choices such as Python, Java, Django, and Data Science.
+
+## 3. Create a ModelForm
+
+Create a `StudentForm` using Django's `ModelForm`.
+
+Requirements:
+
+- Use `Meta.model` to connect the form with the `Student` model.
+- Specify the fields you want to display.
+- Apply HTML widgets such as `TextInput`, `EmailInput`, `NumberInput`, `Select`, and `Textarea`.
+- Add appropriate placeholders and CSS classes to form fields.
+- Implement custom validation for the phone number.
+- Display validation errors when the user enters invalid data.
+
+## 4. Implement the following features
+
+Task 1: Add Student
+
+Create a registration page using `StudentForm`. When the form is valid, save the student to the database and display a success message.
+
+Task 2: Display Students
+
+Show all registered students in an HTML table with Edit and Delete links.
+
+Task 3: Update Student
+
+Retrieve a student using their ID and display the existing values in the form. Save the updated data after validation.
+
+Task 4: Delete Student
+
+Delete a student by ID after displaying a confirmation page.
+
+## 5. Additional challenges
+
+After completing the basic CRUD operations, implement these requirements:
+
+- Custom validation: Create `clean_name()` to reject names containing digits.
+- Email validation: Prevent duplicate email addresses.
+- Search: Search students by name using `name__icontains`.
+- Filtering: Filter students by course.
+- Pagination: Display only 5 students per page using Django's `Paginator`.
+- Bootstrap: Style the registration form and student table.
+
+## 6. Suggested project structure
+
+```
+student_project/
+├── manage.py
+├── student_project/
+│   ├── settings.py
+│   └── urls.py
+└── students/
+    ├── models.py
+    ├── forms.py
+    ├── views.py
+    ├── urls.py
+    └── templates/
+        └── students/
+            ├── student_form.html
+            ├── student_list.html
+            ├── student_update.html
+            └── student_confirm_delete.html
+```
+
+## 7. Your implementation checklist
+
+Your progress
+
+0 of 9 completed
+
+Create the Django project and app
+
+Create the Student model and run migrations
+
+Create StudentForm using ModelForm
+
+Implement form validation
+
+Implement Create and Read views
+
+Implement Update and Delete views
+
+Create HTML templates
+
+Test invalid and valid form submissions
+
+Implement search, filtering and pagination
+
+Important: Try to complete this task without looking at a ready-made solution. Start with `models.py`, then `forms.py`, and then `views.py`.
+
+Once you've written your `StudentForm` code, send me your `forms.py`. I'll review it and point out any mistakes before you move to the next step.

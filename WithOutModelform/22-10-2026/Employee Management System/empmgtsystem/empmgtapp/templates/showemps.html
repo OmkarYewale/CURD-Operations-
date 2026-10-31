@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Employees</title>
+    <style>
+        table,th,td,tr{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <form method="get" action="{% url 'searchemp'%}">
+        <label for="technology">Search employee:</label>
+        <input type="search" name="technology" id="technology">
+        <input type="submit" value="Search">
+        <input type="submit" value="Show all Emp Details">
+        <p>{{msg}}</p>
+    </form>
+    
+    <hr>
+    <h1>Employees Details </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>employee_code</th>
+                <th>employee_name</th>
+                <th>email</th>
+                <th>phone</th>
+                <th>technology</th>
+                <th>experience</th>
+                <th>salary</th>
+                <th>city</th>                    
+                <th>status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in empdb%}
+            <tr>
+                <td>{{emp.employee_code}}</td>
+                <td>{{emp.employee_name}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.phone}}</td>
+                <td>{{emp.technology}}</td>
+                <td>{{emp.experience}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.city}}</td>
+                <td>{{emp.status}}</td>
+                <td><a href="{%url 'get_update_page' emp.employee_code %}">Edit</a></td>
+                <td><a href="{% url 'delete' emp.employee_code %}"  onclick="return confirm('Are you sure you want to delete this employee?')">Delete</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <button onclick="alert('JavaScript is working!')">
+    Test JavaScript
+</button>
+</body>
+</html>
+
